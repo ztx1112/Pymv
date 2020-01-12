@@ -1,5 +1,3 @@
-import time 
-import threading
+import cv2
 
-def fun1(int):
-    
+print(cv2.__version__)

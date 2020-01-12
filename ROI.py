@@ -11,13 +11,6 @@ class ROI():
         self.cv=None
         self.event=None
 
-        """    def AddRoi(self,event,Canvas):
-        self.cv=Canvas
-        self.event=event
-        statusmap.get(self.roi_list[-1].nextstatus,default)()"""
-        
-    
-
     def add(self):
         self.roi_list.append(RoiDate())
         return
@@ -53,20 +46,12 @@ class ROI():
     def conut(self):
         return len(self.roi_list)
 
-    """    statusmap={
-    "complex":complexer,
-    "started":starteder,
-    "motion":motioner,
-    "ended":ender,
-    }"""
-
-
 
 
 
 class RoiDate():
     def __init__(self):
-        self.nextstatus="started"
+        self.name=""
         self.start_x=None
         self.start_y=None
         self.end_x=None
