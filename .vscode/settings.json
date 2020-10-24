@@ -2,5 +2,8 @@
     "cSpell.words": [
         "updatacam",
         "winfo"
-    ]
+    ],
+
+    "python.pythonPath": "C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37",
+    
 }

@@ -1,4 +1,4 @@
-import gxipy as gx
+#import gxipy as gx
 import threading as th
 import time
 import tkinter as tk
@@ -8,13 +8,15 @@ from PIL import ImageOps, ImageTk
 import PIL
 from ROI import *
 from cam import *
-import detectionwindow as dw
+#import detectionwindow as dw
 
 
 def GetImage():
     global cam,image,lb,rsize,root,imagedata
-    data=cam.Grabimage()
-    imagedata=data.copy()
+    data=cam.GetImage()
+    
+    im=cv2.cvtColor(data,cv2.COLOR_BGR2RGB)
+    imagedata=im.copy()
     img=PIL.Image.fromarray(imagedata).resize(rsize)
     image=ImageTk.PhotoImage(img)
     lb.config(image=image)
@@ -36,9 +38,6 @@ def live():
     while status:
         GetImage()
         
-
-
-
 def LiveStop(event=None):
     global status
     status=0
@@ -62,8 +61,11 @@ roi=ROI()
 lb=None
 image=None
 status=0
-num,ls=Update_cam()
-cam=DHcam(ls[0]['sn'])
+
+cam=NormalCam()
+
+cam.OpenDevice()
+
 root=tk.Tk()
 root.title("window")
 #root.geometry('1000x800')
@@ -94,4 +96,4 @@ lb.pack()
 
 root.mainloop()
 
-cam.Close()
+#cam.Close()
